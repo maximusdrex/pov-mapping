@@ -1,0 +1,54 @@
+.map-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  max-height: 90vh;
+}
+
+.var-heading {
+    display: flex;
+    flex: 0 0;
+    flex-flow: row nowrap;
+    font-size: large;
+}
+
+.query-container {
+    flex: 0 1;
+    min-width: 400px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    max-height: 90vh;
+    overflow: scroll;
+}
+
+#variable_container {
+    flex: 1 1;
+}
+
+#button_container {
+    flex: 0 1;
+}
+
+#geography_container {
+    flex: 0 1;
+}
+
+#category_container {
+    flex: 0 1;
+}
+
+#map {
+  height: 95vh;
+  flex: 2 95vh;
+  min-width: 400px;
+  min-height: 400px;
+  margin: 0;
+  padding: 0;
+}
+
+.map {
+    display: flex;
+    flex: 1 1;
+}

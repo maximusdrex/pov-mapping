@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>
+            NEOCANDO | Northeast Ohio Community and Neighborhood Data for Organizing
+        </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="css/neocando.css">
+        <link rel="stylesheet" href="NEOCANDO%20Northeast%20Ohio%20Community%20and%20Neighborhood%20Data%20for%20Organizing_files/font-awesome.min.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="NEOCANDO%20Northeast%20Ohio%20Community%20and%20Neighborhood%20Data%20for%20Organizing_files/css2.css" rel="stylesheet">
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <style>
+        #map {
+            height: 100%;
+        }
+        .scrollable-menu {
+            height: auto;
+            max-height: 250px;
+            overflow-x: hidden;
+        }
+    </style>
+
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <div class="container-fluid bg-dark">
+            <div class="container-xl">
+                <nav class="navbar navbar-expand-lg py-0 navbar-dark">
+                    <a class="navbar-brand" href="https://neocando.case.edu/index.html">
+                         <img src="NEOCANDO%20Northeast%20Ohio%20Community%20and%20Neighborhood%20Data%20for%20Organizing_files/neocando_logo_reverse_150.png" class="d-inline-block align-top" alt="NEOCANDO" loading="lazy">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav ml-auto text-right">
+                            <a class="nav-link internal" href="https://neocando.case.edu/index.html#data-tools">Data Tools</a>
+                        </div>
+                        <div class="navbar-nav text-right">
+                            <a class="nav-link internal" href="https://neocando.case.edu/index.html#powered-by">Powered by NEOCANDO</a>
+                        </div>
+                        <div class="navbar-nav text-right">
+                            <a class="nav-link" href="https://neocando.case.edu/about.html">About Us</a>
+                        </div>
+                        <div class="navbar-nav text-right">
+                            <a class="nav-link" href="https://neocando.case.edu/contact.html">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <div class="container-fluid">
+            <div class="container-xl my-5">
+                <!--<div class="row">
+                    <div class="col-md-8">
+                        <h1>Mapping Portal</h1>
+                        <p>COMING SOON. Access NEOCANDO geospatial data.</p>
+
+                        <a role="button" class="btn btn-primary mt-auto" href="#mapping_portal">Launch</a>
+                    </div>
+                    <div class="col-md">
+                        <img src="NEOCANDO%20Northeast%20Ohio%20Community%20and%20Neighborhood%20Data%20for%20Organizing_files/mapping_portal_icon.svg">
+                    </div>
+                </div>-->
+                <div class="row" id="mapping_portal">
+                    <div class="col-md-4">
+                        <div class="accordion" id="data_accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="geo_heading">
+                                    <button id="geo_drop" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#geo_collapse" aria-expanded="true" aria-controls="geo_collapse">
+                                        Geographic Level
+                                        <div class="spinner-border" id="geo_load"></div>
+                                    </button>
+                                </h2>
+                                <!--<button id="geo_drop" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                </button>-->
+                                <div id="geo_collapse" class="accordion-collapse collapse show" aria-labelledby="geo_heading" data-bs-parent="#data_accordion">
+                                    <div class="accordion-body">
+                                        <ul class="list-group scrollable-menu" id="geography_container">
+                                            <div class="spinner-border"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="county_header">
+                                    <button id="county_drop" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#county_collapse" aria-expanded="true" aria-controls="county_collapse">
+                                        Filter Counties
+                                        <div class="spinner-border" id="county_load"></div>
+                                    </button>
+                                </h2>
+                                <div id="county_collapse" class="accordion-collapse collapse" aria-labelledby="county_header" data-bs-parent="#data_accordion">
+                                    <div class="accordion-body">
+                                        <ul class="list-group scrollable-menu" id="county_container">
+                                            <div class="spinner-border"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="var_header">
+                                    <button id="var_drop" class="accordion-button d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#var_collapse" aria-expanded="true" aria-controls="var_collapse">
+                                        <div class="spinner-border" id="var_loader"></div>
+                                        <div>
+                                            Select Variable To Map:
+                                            <br>
+                                            <div id="var_name">
+                                            </div>
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="var_collapse" class="accordion-collapse collapse" aria-labelledby="var_header" data-bs-parent="#data_accordion">
+                                    <div class="accordion-body">
+                                        <div class="list-group scrollable-menu">
+                                            <input class="list-group-item" type="text" id="var_search" onkeyup="ncMap.filterVariables()" placeholder="&#xf002 Filter variables.."/>
+                                            <div id="variable_container">
+                                                <button class="list-group-item list-group-item-action list-group-item-info" data-bs-toggle="collapse" data-bs-target="#geo_collapse" aria-expanded="true" aria-controls="geo_collapse">Select a geographic level first</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="map_header">
+                                    <button id="map_drop" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#map_collapse" aria-expanded="true" aria-controls="map_collapse">
+                                        Map Settings:
+                                    </button>
+                                </h2>
+                                <div id="map_collapse" class="accordion-collapse collapse" aria-labelledby="map_header" data-bs-parent="#data_accordion">
+                                    <div class="accordion-body">
+                                        <h1>
+                                            TODO
+                                        </h1>
+                                        <div>
+                                            Start Color:
+                                            <input type="color" />
+                                        </div>
+                                        <div>
+                                            End Color:
+                                            <input type="color" />
+                                        </div>
+                                        <div>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="type_dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Map Type
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="type_dropdown">
+                                                    <li><a class="dropdown-item" href="#">Gradient</a></li>
+                                                    <li><a class="dropdown-item" href="#">Chloropleth</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-8">
+                        <div id="map" style="min-height: 400px;"></div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col" id="button_container">
+                        <a class="btn btn-primary" role="button" href="#" id="execute_query_button" onclick="ncMap.executeQuery()">Create Map</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script src="js/map.js"></script>
+    
+        <!-- footer -->
+        <footer class="container-fluid pt-5">
+            <div class="container text-center text-md-left text-white">
+                <div class="row">
+                    <div class="col-md">
+                        <h5>Site Map</h5>
+                        <ul>
+                            <li><a href="https://neocando.case.edu/about.html">About Us</a></li>
+                            <li><a href="https://neocando.case.edu/contact.html">Contact</a></li>
+                            <li><a href="https://neocando.case.edu/mapping.html">Mapping Portal</a></li>
+                            <li><a href="https://neocando.case.edu/neighborhood-data.html">Neighborhood Data Warehouse</a></li>
+                            <li><a href="https://neocando.case.edu/neighborhood-strategy.html">Neighborhood Strategy Technology</a></li>
+                            <li><a href="https://neocando.case.edu/property-data.html">Property Data Portal</a></li>
+                        </ul>
+                        <img src="NEOCANDO%20Northeast%20Ohio%20Community%20and%20Neighborhood%20Data%20for%20Organizing_files/neocando_logo_full_reverse-300x250.png">
+                    </div>
+                    <div class="col-md">
+                        <h5>Follow us on</h5>
+
+                        <a href="https://www.facebook.com/PovertyCenterCLE/" class="fa fa-facebook"></a>
+                        <a href="https://twitter.com/povertyctrcle" class="fa fa-twitter"></a>
+
+                        <ul>
+                            <li><a href="http://povertycenter.case.edu/">povertycenter.case.edu</a></li>
+                            <li><a href="http://msass.case.edu/">msass.case.edu</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md text-right">
+                        <a href="http://povertycenter.case.edu/">
+                            <img src="NEOCANDO%20Northeast%20Ohio%20Community%20and%20Neighborhood%20Data%20for%20Organizing_files/Mandel_CUPCD_logo_rev_rgb-300x156.png">
+                        </a>
+                        <p>NEOCANDO at the Center on Urban Poverty and Community Development</p>
+                        <p>Jack, Joseph and Morton Mandel School of Applied Social Sciences</p>
+                        <p>
+                            Case Western Reserve University<br>
+                            10900 Euclid Ave<br>
+                            Cleveland, OH 44106<br>
+                        </p>
+                    </div>
+                    <div class="w-100"></div>
+                    <div>
+                        <hr class="bg-white">
+                        <p>Copyright © 2020 Center on Urban Poverty and Community Development</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+
+</body></html>

@@ -1,0 +1,163 @@
+html, body{
+    min-width: 320px;
+
+    font-family: "Lato", sans-serif !important;
+}
+
+body.dark   {
+    background: #dadfe8;
+}
+
+.container-xl p {
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+}
+
+p.small {
+    font-size: 0.8rem;
+}
+
+h1, h2, h3, h4, h5  {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #00aeef;
+}
+
+.container-fluid.bg-dark    {
+    background: #0a304e !important;
+}
+
+.container-fluid.fixed-top + .container-fluid.hero  {
+    position: relative;
+    top: 85px;
+    margin-bottom: 85px;
+}
+
+.container-fluid.fixed-top + .container-fluid  {
+    position: relative;
+    top: 85px;
+    margin-bottom: 125px;
+}
+
+.transition {
+    background: #698da4;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.navbar a:hover {
+    color: white !important;
+    text-decoration: underline;
+}
+
+.navbar a.internal  {
+    color: #00aeef !important;
+}
+
+.navbar a.internal:hover  {
+    color: #00aeef !important;
+}
+
+.navbar-toggler {
+    color: white;
+    background-color: white;
+    border-color: white;
+}
+
+.hero   {
+    background-image: url("../img/neocando_banner.svg");
+    background-size: cover;
+    background-position: center center;
+    height: 400px;
+}
+
+.data-block {
+    background: white;
+    padding: 1rem;
+    height: 100%;
+
+    webkit-box-shadow: 5px 5px 0px 0px #ccc;
+    -moz-box-shadow: 5px 5px 0px 0px #ccc;
+    box-shadow: 5px 5px 0px 0px #ccc;
+}
+
+.data-block h5 {
+    font-size: 0.9rem;
+}
+
+.data-block p{
+    font-size: 1rem;
+    line-height: auto;
+}
+
+.btn.btn-primary {
+    background-color: #f26565;
+    border: 1px solid transparent;
+}
+
+.btn.btn-primary:hover {
+    background-color: #d75858;
+    border: 1px solid #d75858;
+}
+
+.partners   {
+    width: 90%;
+    margin: auto;
+}
+
+.partners a img {
+    filter: grayscale(100%);
+}
+
+.partners a img:hover {
+    filter: none;
+}
+
+footer {
+    background: #0a304e;
+    margin-top:50px;
+}
+
+footer h5   {
+    color: white;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer li a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.fa {
+  padding: 15px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
